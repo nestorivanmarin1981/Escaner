@@ -10,13 +10,36 @@
   </style>
 </head>
 <body>
-  <h2>Abriendo el escáner de Google Drive...</h2>
-  <p>Si la aplicación no se abre automáticamente, presiona el siguiente botón:</p>
 
-  <a href="googledrive://scan" class="btn">Abrir Cámara de Escaneo</a>
+  <h2>Abriendo el escáner de Google Drive...</h2>
+  <p>Si la aplicación no se abre automáticamente, presiona el botón:</p>
+  
+  <a id="btnScan" href="#" class="btn">Abrir Cámara de Escaneo</a>
 
   <script>
-    window.location.href = "googledrive://scan";
+    function redirigir() {
+      var isAndroid = /Android/i.test(navigator.userAgent);
+      
+      if (isAndroid) {
+        // Formato Intent oficial de Android para forzar el escáner de la app de Drive
+        window.location.href = "intent://scan#Intent;scheme=googledrive;package=com.google.android.apps.docs;end";
+      } else {
+        // Esquema para iPhone (iOS)
+        window.location.href = "googledrive://scan";
+      }
+    }
+
+    // Configurar enlace del botón manual
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    var urlTarget = isAndroid 
+      ? "intent://scan#Intent;scheme=googledrive;package=com.google.android.apps.docs;end" 
+      : "googledrive://scan";
+      
+    document.getElementById('btnScan').setAttribute('href', urlTarget);
+
+    // Intentar abrir automáticamente al cargar
+    redirigir();
   </script>
+
 </body>
 </html>
