@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abriendo Escáner...</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px 20px; }
+    .btn { background: #1a73e8; color: white; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-size: 18px; font-weight: bold; display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Abriendo el escáner de Google Drive...</h2>
+  <p>Si la aplicación no se abre automáticamente, presiona el siguiente botón:</p>
+
+  <a href="googledrive://scan" class="btn">Abrir Cámara de Escaneo</a>
+
+  <script>
+    window.location.href = "googledrive://scan";
+  </script>
+</body>
+</html>
